@@ -1,0 +1,11 @@
+0 bac
+1 blight
+2 late
+3 mold
+4 septoria
+5 spider
+6 target
+7 yellow
+8 mosaic
+9 health
+10 powder

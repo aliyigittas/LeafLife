@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>850995181107-361e5keq3h6pavokfjg707ndd8nu3qnv.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.850995181107-361e5keq3h6pavokfjg707ndd8nu3qnv</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>850995181107-s4ea086ubldtl1srj7uumn5jbfcla3cd.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB-lu8O_XRz-9ZMy_b6Sr9bEl-XR-j6Q1k</string>
+	<key>GCM_SENDER_ID</key>
+	<string>850995181107</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.alitas.newproj</string>
+	<key>PROJECT_ID</key>
+	<string>gdscproject-1407f</string>
+	<key>STORAGE_BUCKET</key>
+	<string>gdscproject-1407f.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:850995181107:ios:7c6d112a1e8faed0bd9546</string>
+	<key>DATABASE_URL</key>
+	<string>https://gdscproject-1407f-default-rtdb.europe-west1.firebasedatabase.app</string>
+</dict>
+</plist>
