@@ -30,7 +30,7 @@ For android, use the .apk file provided in releases section.
 ## iOS
 For iOS, open ios/Runner.xcodeproj
 Connect your physical iOS device, click "Runner" in the left top corner, then click Signing & Capabilities and add your provisioning profile. 
-Then enter this command `flutter run` in project directory.
+Then enter this command `flutter pub get` then `flutter run` in project directory.
 
 ## Contributors
 - Ali Taş
