@@ -1,35 +1,47 @@
 # LeafLife
 ### LeafLife is a mobile application that identifies plant diseases by using machine learning algorithms to analyze photos taken on the user's phone.
 
-* Table of Contents
-* Installation
-* Usage
-* Contributing
-* Credits
-* License
-* Installation
-To install LeafLife, follow these steps:
+## Used Google Technologies
+Flutter
+  -Mobile application
+Firebase
+  -Authentication
+  -FireStore
+  -Storage
+Tensorflow
+  -Training the model
+Kaggle
+  -Obtaining dataset
+  
+### LeafLife
+Farmers usually check the leaves of their crops to identify diseases early and prevent them from spreading. 
+
+However, disease identification can be a challenge for farmers sometimes.
+
+To address this challenge, we have developed a mobile application called LeafLife. 
+
+By using LeafLife, we aim to contribute to two of the United Nations' Sustainable Development Goals which are Responsible Consumption and Production, and Life on Land.
+
+We have three main pages on our application. The Home page is designed to display all of a farmer's previous scan results in one place, as we believe this is important information for them to have. The Explore page provides information on all the diseases that our application can detect, including possible solutions to those diseases. The Profile page displays the user's profile information.
+To scan a new plant, users can click on the button located in the bottom right corner of every page. This scan page allows them to choose between selecting an image from their phone's gallery or taking a photo to use for the scan. 
+The scan results are automatically added to the Home page once the scan is completed.
 
 
-Launch the app on your mobile device.
-Grant the app permission to access your camera and photo library.
-Usage
-To use LeafLife, follow these steps:
+# How to run?
 
-Launch the app on your mobile device.
-Take a photo of a plant leaf that you suspect may be diseased.
-The app will analyze the photo using machine learning algorithms and provide a diagnosis.
-If the app is unable to provide a diagnosis, you can submit the photo and diagnosis request to a team of experts for further analysis.
-Contributing
-We welcome contributions to LeafLife! To contribute, follow these steps:
+## Android
+For android, use the .apk file provided in releases section.
 
-Fork the repository.
-Create a new branch for your changes.
-Make your changes and commit them.
-Push your changes to your fork.
-Submit a pull request to the main repository.
-Credits
-LeafLife was developed by [Your Company Name], with contributions from [List of Contributors]. We would like to thank [List of People or Organizations] for their support and assistance.
+## iOS
+For iOS, open ios/Runner.xcodeproj
+Connect your physical iOS device, click "Runner" in the left top corner, then click Signing & Capabilities and add your provisioning profile. 
+Then enter this command flutter run in project directory.
 
-License
+
+## Contributors
+- Ali Taş
+- Mehmet Kuzucu
+- Şafak Gün
+
+## License
 LeafLife is distributed under the [Insert License Type] license. See LICENSE for more information.
