@@ -26,11 +26,33 @@ To scan a new plant, users can click on the button located in the bottom right c
 
 ## Android
 For android, use the .apk file provided in releases section.
+If you want to build yourself, enter this command `flutter pub get` then `flutter run` in project directory.
+If you encountered build problems related "tflite", do the following changes:
+Open the plugin's build.gradle file and do following changes
+
+For mac:
+`/Users/yourusername/src/flutter/.pub-cache/hosted/pub.dartlang.org/tflite-1.1.2/android/build.gradle`
+
+For windows:
+`C:/Users/yourusername/AppData/Local/Pub/Cache/Hosted/pub.dev/tflite-1.1.2/android/build.gradle`
+
+from this:
+
+![fromthis](https://user-images.githubusercontent.com/48025526/228388569-0201ad3d-4043-4de7-bd12-9208cd79ef80.png)
+
+to this:
+
+![tothis](https://user-images.githubusercontent.com/48025526/228388584-af225075-cd21-4bed-85b6-22d4e2d94f7f.png)
+
+This issue is plugin related, not the project.
 
 ## iOS
-For iOS, open ios/Runner.xcodeproj
+For iOS, open `ios/Runner.xcodeproj`
 Connect your physical iOS device, click "Runner" in the left top corner, then click Signing & Capabilities and add your provisioning profile. 
 Then enter this command `flutter pub get` then `flutter run` in project directory.
+
+<img width="1137" alt="Readme" src="https://user-images.githubusercontent.com/48025526/228389107-33af570b-7f54-49e7-a6f5-cbc431acfe20.png">
+
 
 ## Contributors
 - Ali Taş
