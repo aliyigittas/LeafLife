@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/LoginScreen', //en son onboarding screen ekleriz.
+      initialRoute: '/LoginScreen',
       routes: {
         '/LoginScreen': (context) => const LoginScreen(),
         '/HomeScreen': (context) => const HomeScreen(),
