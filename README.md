@@ -38,4 +38,4 @@ Then enter this command `flutter run` in project directory.
 - Şafak Gün
 
 ## License
-LeafLife is distributed under the [Insert License Type] license. See LICENSE for more information.
+LeafLife is distributed under the MIT license. See LICENSE for more information.
