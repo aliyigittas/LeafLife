@@ -173,59 +173,54 @@ class _HomeScreenState extends State<HomeScreen> {
                             var days = DateTime.now()
                                 .difference(contents['Date'].toDate())
                                 .inDays;
-                            var weeks = DateTime.now()
-                                .difference(contents['Date'].toDate())
-                                .inDays;
-                            var months = DateTime.now()
-                                .difference(contents['Date'].toDate())
-                                .inDays;
-                            var years = DateTime.now()
-                                .difference(contents['Date'].toDate())
-                                .inDays;
+                            var weeks = (days / 7).floor();
+                            var months = (days / 30).floor();
+                            var years = (days / 365).floor();
+
                             if (seconds < 60) {
                               if (seconds == 1) {
-                                time = "$seconds second ago";
+                                time = '$seconds second ago';
                               } else {
-                                time = "$seconds seconds ago";
+                                time = '$seconds seconds ago';
                               }
                             } else if (minutes < 60) {
                               if (minutes == 1) {
-                                time = "$minutes minute ago";
+                                time = '$minutes minute ago';
                               } else {
-                                time = "$minutes minutes ago";
+                                time = '$minutes minutes ago';
                               }
                             } else if (hours < 24) {
                               if (hours == 1) {
-                                time = "$hours hour ago";
+                                time = '$hours hour ago';
                               } else {
-                                time = "$hours hours ago";
+                                time = '$hours hours ago';
                               }
                             } else if (days < 7) {
                               if (days == 1) {
-                                time = "$days day ago";
+                                time = '$days day ago';
                               } else {
-                                time = "$days days ago";
+                                time = '$days days ago';
                               }
-                            } else if (days < 30) {
+                            } else if (weeks < 4) {
                               if (weeks == 1) {
-                                time = "$weeks week ago";
+                                time = '$weeks week ago';
                               } else {
-                                time = "$weeks weeks ago";
+                                time = '$weeks weeks ago';
                               }
-                            } else if (days < 365) {
+                            } else if (months < 12) {
                               if (months == 1) {
-                                time = "$months month ago";
+                                time = '$months month ago';
                               } else {
-                                time = "$months months ago";
+                                time = '$months months ago';
                               }
-                            } else if (days > 365) {
+                            } else if (years <= 1) {
                               if (years == 1) {
-                                time = "$years year ago";
+                                time = '$years year ago';
                               } else {
-                                time = "$years years ago";
+                                time = '$years years ago';
                               }
                             } else {
-                              time = "Error retrieving time";
+                              time = 'a long time ago';
                             }
                             String suggestions =
                                 "\n    For further information \nplease check Explore page!";
