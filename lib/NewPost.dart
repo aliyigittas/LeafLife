@@ -1,5 +1,5 @@
+// ignore_for_file: file_names, avoid_print, use_build_context_synchronously
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -65,6 +65,7 @@ class _NewPostState extends State<NewPost> {
   }
 
   Future classifyImage() async {
+    // ignore: avoid_print
     print("YES");
     await Tflite.loadModel(
         model: 'assets/model_unquant.tflite', labels: 'assets/labels.txt');
@@ -240,9 +241,9 @@ class _NewPostState extends State<NewPost> {
                     showDialog(
                       context: context,
                       builder: (BuildContext context) {
-                        return Column(
+                        return const Column(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
+                          children: [
                             CircularProgressIndicator(
                               color: Color.fromARGB(255, 221, 249, 221),
                             ),
@@ -259,6 +260,7 @@ class _NewPostState extends State<NewPost> {
                       },
                     );
                     await _uploadPhoto();
+                    // ignore: use_build_context_synchronously
                     Navigator.pop(
                         context); // close CircularProgressIndicator dialog
                   }
@@ -269,12 +271,13 @@ class _NewPostState extends State<NewPost> {
                   print("Highest Confidence: $highestConfidencePercentage");
 
                   // show CircularProgressIndicator for image classification
+                  // ignore: use_build_context_synchronously
                   showDialog(
                     context: context,
                     builder: (BuildContext context) {
-                      return Column(
+                      return const Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
+                        children: [
                           CircularProgressIndicator(
                             color: Color.fromARGB(255, 221, 249, 221),
                           ),
