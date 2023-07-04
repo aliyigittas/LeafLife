@@ -160,7 +160,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                             Map<String, dynamic> contents =
                                 snapshot.data!.data() as Map<String, dynamic>;
-                            var time;
+                            String time;
                             var seconds = DateTime.now()
                                 .difference(contents['Date'].toDate())
                                 .inSeconds;
@@ -253,53 +253,132 @@ class _HomeScreenState extends State<HomeScreen> {
                             }
 
                             return Card(
-                                //make card clickable
-                                elevation: 3,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                ),
-                                color: const Color.fromARGB(255, 221, 249, 221),
-                                child: InkWell(
-                                  onTap: () {
-                                    showDialog(
-                                      context: context,
-                                      builder: (context) => AlertDialog(
-                                        backgroundColor: const Color.fromARGB(
-                                            255, 221, 249, 221),
-                                        title: Text(disease),
-                                        content: Column(
-                                          mainAxisSize: MainAxisSize.min,
+                              //make card clickable
+                              elevation: 3,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                              color: const Color.fromARGB(255, 221, 249, 221),
+                              child: InkWell(
+                                onTap: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) => AlertDialog(
+                                      backgroundColor: const Color.fromARGB(
+                                          255, 221, 249, 221),
+                                      title: Text(disease),
+                                      content: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          AspectRatio(
+                                            aspectRatio: 1,
+                                            child: Image.network(
+                                              contents['link'],
+                                              height: 50,
+                                              width: 50,
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            height: 10,
+                                          ),
+                                          Text(
+                                            "Confidence is ${contents['Confidence']}",
+                                            style: const TextStyle(
+                                              fontSize: 13,
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            height: 10,
+                                          ),
+                                          Text(
+                                            suggestions,
+                                            style: const TextStyle(
+                                              fontSize: 15,
+                                              color: Color(0xFF000000),
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            height: 10,
+                                          ),
+                                          Text(
+                                            time,
+                                            style: const TextStyle(
+                                                fontSize: 12,
+                                                color: Colors.grey),
+                                          ),
+                                        ],
+                                      ),
+                                      actions: [
+                                        TextButton(
+                                          style: TextButton.styleFrom(
+                                            foregroundColor:
+                                                const Color(0xFF5c9464),
+                                          ),
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: const Text(
+                                            'Close',
+                                            style: TextStyle(
+                                              color: Color(0xFF084864),
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  );
+                                },
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                      width: 120,
+                                      height: 120,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Stack(
                                           children: [
+                                            const Positioned.fill(
+                                              child: Align(
+                                                alignment: Alignment.center,
+                                                child:
+                                                    CircularProgressIndicator(
+                                                  color: Color(0xFF084864),
+                                                ),
+                                              ),
+                                            ),
                                             AspectRatio(
                                               aspectRatio: 1,
                                               child: Image.network(
                                                 contents['link'],
-                                                height: 50,
-                                                width: 50,
+                                                fit: BoxFit.cover,
                                               ),
                                             ),
-                                            const SizedBox(
-                                              height: 10,
-                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Flexible(
+                                      flex: 3,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
                                             Text(
-                                              "Confidence is ${contents['Confidence']}",
+                                              'Disease: $disease',
                                               style: const TextStyle(
-                                                fontSize: 13,
+                                                fontSize: 17,
                                               ),
                                             ),
-                                            const SizedBox(
-                                              height: 10,
-                                            ),
+                                            const SizedBox(height: 8),
                                             Text(
-                                              suggestions,
-                                              style: const TextStyle(
-                                                fontSize: 15,
-                                                color: Color(0xFF000000),
-                                              ),
+                                              'Confidence: ${contents['Confidence']}',
+                                              style:
+                                                  const TextStyle(fontSize: 13),
                                             ),
-                                            const SizedBox(
-                                              height: 10,
-                                            ),
+                                            const SizedBox(height: 8),
                                             Text(
                                               time,
                                               style: const TextStyle(
@@ -308,91 +387,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                             ),
                                           ],
                                         ),
-                                        actions: [
-                                          TextButton(
-                                            style: TextButton.styleFrom(
-                                              foregroundColor:
-                                                  const Color(0xFF5c9464),
-                                            ),
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                            },
-                                            child: const Text(
-                                              'Close',
-                                              style: TextStyle(
-                                                color: Color(0xFF084864),
-                                              ),
-                                            ),
-                                          )
-                                        ],
                                       ),
-                                    );
-                                  },
-                                  child: Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      SizedBox(
-                                        width: 120,
-                                        height: 120,
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Stack(
-                                            children: [
-                                              const Positioned.fill(
-                                                child: Align(
-                                                  alignment: Alignment.center,
-                                                  child:
-                                                      CircularProgressIndicator(
-                                                    color: Color(0xFF084864),
-                                                  ),
-                                                ),
-                                              ),
-                                              AspectRatio(
-                                                aspectRatio: 1,
-                                                child: Image.network(
-                                                  contents['link'],
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                      Flexible(
-                                        flex: 3,
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                'Disease: $disease',
-                                                style: const TextStyle(
-                                                  fontSize: 17,
-                                                ),
-                                              ),
-                                              const SizedBox(height: 8),
-                                              Text(
-                                                'Confidence: ${contents['Confidence']}',
-                                                style: const TextStyle(
-                                                    fontSize: 13),
-                                              ),
-                                              const SizedBox(height: 8),
-                                              Text(
-                                                time,
-                                                style: const TextStyle(
-                                                    fontSize: 12,
-                                                    color: Colors.grey),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ));
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
                           },
                         );
                       },
