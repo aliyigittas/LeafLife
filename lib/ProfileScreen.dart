@@ -13,10 +13,9 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   FirebaseFirestore db = FirebaseFirestore.instance;
-  String? str = FirebaseAuth.instance.currentUser?.photoURL;
+  String? photoUrl = FirebaseAuth.instance.currentUser?.photoURL;
   final username = FirebaseAuth.instance.currentUser?.displayName;
   String? userid = FirebaseAuth.instance.currentUser?.uid;
-
   File? imageFile;
 
   Future<int> _getPostCount(var refToUser) async {
@@ -44,76 +43,69 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ClipRRect(
                 borderRadius: BorderRadius.circular(100),
                 child: Image.network(
-                  str!,
+                  photoUrl!,
                   width: 100,
                   height: 100,
                   fit: BoxFit.cover,
                 ),
               ),
-              const SizedBox(
-                height: 20,
-              ),
+              const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text(username!,
-                          style: const TextStyle(
-                            fontSize: 24,
-                          )),
-                      const SizedBox(
-                        height: 5,
+                      Text(
+                        username!,
+                        style: const TextStyle(fontSize: 24),
                       ),
+                      const SizedBox(height: 5),
                       Text(FirebaseAuth.instance.currentUser!.email!,
                           style: const TextStyle(fontSize: 15)),
-                      const SizedBox(
-                        height: 20,
-                      ),
+                      const SizedBox(height: 20),
                     ],
                   ),
                 ],
               ),
               Text("Total Scans: $postCount"),
-              const SizedBox(
-                height: 20,
-              ),
+              const SizedBox(height: 20),
               //about this app popup
               ElevatedButton.icon(
-                  icon: const Icon(Icons.info),
-                  onPressed: () {
-                    showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            backgroundColor:
-                                const Color.fromARGB(255, 221, 249, 221),
-                            title: const Text("About this app"),
-                            content: const Text(
-                                "-Ali Taş\n-Mehmet Kuzucu\n-Şafak Gün\n\nLeafLife - 2023 Solution Challenge"),
-                            actions: [
-                              TextButton(
-                                style: TextButton.styleFrom(
-                                  foregroundColor: const Color(0xFF5c9464),
-                                ),
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
-                                child: const Text("Close",
-                                    style: TextStyle(color: Color(0xFF084864))),
-                              ),
-                            ],
-                          );
-                        });
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xff084864),
-                  ),
-                  label: const Text("About this app")),
-
+                icon: const Icon(Icons.info, color: Colors.white),
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        backgroundColor:
+                            const Color.fromARGB(255, 221, 249, 221),
+                        title: const Text("About this app"),
+                        content: const Text(
+                            "-Ali Taş\n-Mehmet Kuzucu\n-Şafak Gün\n\nLeafLife - 2023 Solution Challenge"),
+                        actions: [
+                          TextButton(
+                            style: TextButton.styleFrom(
+                                foregroundColor: const Color(0xFF5c9464)),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: const Text("Close",
+                                style: TextStyle(color: Color(0xFF084864))),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xff084864),
+                ),
+                label: const Text("About this app",
+                    style: TextStyle(color: Colors.white)),
+              ),
               ElevatedButton.icon(
-                icon: const Icon(Icons.logout),
+                icon: const Icon(Icons.logout, color: Colors.white),
                 onPressed: () {
                   FirebaseAuth.instance.signOut();
                   Navigator.pushReplacementNamed(context, '/LoginScreen');
@@ -121,11 +113,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xff084864),
                 ),
-                label: const Text("Log Out"),
+                label: const Text(
+                  "Log Out",
+                  style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+                ),
               ),
-              const SizedBox(
-                height: 100,
-              ),
+              const SizedBox(height: 100),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -147,7 +140,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ],
           );
         } else {
-          return const Center(child: CircularProgressIndicator());
+          return const Center(
+            child: CircularProgressIndicator(color: Colors.green),
+          );
         }
       },
     );

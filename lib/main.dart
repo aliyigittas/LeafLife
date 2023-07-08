@@ -17,12 +17,12 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: '/LoginScreen',
+      theme: ThemeData(useMaterial3: true),
       routes: {
         '/LoginScreen': (context) => const LoginScreen(),
         '/HomeScreen': (context) => const HomeScreen(),
@@ -31,7 +31,6 @@ class MyApp extends StatelessWidget {
         '/SearchScreen': (context) => const SearchScreen(),
         '/NewPost': (context) => const NewPost(),
         '/MainBottomclass': (context) => const MainBottomClass(),
-        //routes here
       },
     );
   }

@@ -43,9 +43,11 @@ class _NewPostState extends State<NewPost> {
       // User canceled picking the image
       return;
     }
-    setState(() {
-      imageFile = File(pickedFile.path);
-    });
+    setState(
+      () {
+        imageFile = File(pickedFile.path);
+      },
+    );
   }
 
   _getFromCamera() async {
@@ -65,7 +67,6 @@ class _NewPostState extends State<NewPost> {
   }
 
   Future classifyImage() async {
-    // ignore: avoid_print
     print("YES");
     await Tflite.loadModel(
         model: 'assets/model_unquant.tflite', labels: 'assets/labels.txt');
@@ -141,7 +142,11 @@ class _NewPostState extends State<NewPost> {
       backgroundColor: const Color(0xFFA4E4B4),
       appBar: AppBar(
         backgroundColor: const Color(0xFF5c9464),
-        title: const Text('Scan Leaf'),
+        title: const Text('Scan Leaf',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 25,
+            )),
         leading: BackButton(
           color: Colors.white,
           onPressed: () {
@@ -163,17 +168,12 @@ class _NewPostState extends State<NewPost> {
                     width: 100,
                     height: 100,
                   ),
-                  const SizedBox(
-                    width: 15,
-                  ),
+                  const SizedBox(width: 15),
                   const Icon(
-                    color: Color(0xff084864),
-                    Icons.arrow_forward_rounded,
-                    size: 50,
-                  ),
-                  const SizedBox(
-                    width: 20,
-                  ),
+                      color: Color(0xff084864),
+                      Icons.arrow_forward_rounded,
+                      size: 50),
+                  const SizedBox(width: 20),
                   const Icon(
                     color: Color(0xff084864),
                     Icons.search_rounded,
@@ -191,35 +191,35 @@ class _NewPostState extends State<NewPost> {
                   fontSize: 20,
                 ),
               ),
-              const SizedBox(
-                height: 20,
-              ),
+              const SizedBox(height: 20),
               ElevatedButton.icon(
-                icon: const Icon(Icons.image_rounded),
+                icon: const Icon(Icons.image_rounded, color: Colors.white),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xff084864),
                 ),
                 onPressed: () async {
                   await _getFromGallery();
                 },
-                label: const Text('Choose from Gallery'),
+                label: const Text(
+                  'Choose from Gallery',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
-              const SizedBox(
-                height: 5,
-              ),
+              const SizedBox(height: 5),
               ElevatedButton.icon(
-                icon: const Icon(Icons.camera_alt_rounded),
+                icon: const Icon(Icons.camera_alt_rounded, color: Colors.white),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xff084864),
                 ),
                 onPressed: () async {
                   await _getFromCamera();
                 },
-                label: const Text('Take Photo'),
+                label: const Text(
+                  'Take Photo',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
-              const SizedBox(
-                height: 20,
-              ),
+              const SizedBox(height: 20),
               if (imageFile != null)
                 Image.file(
                   imageFile!,
@@ -227,11 +227,9 @@ class _NewPostState extends State<NewPost> {
                   height: 200,
                   fit: BoxFit.cover,
                 ),
-              const SizedBox(
-                height: 20,
-              ),
+              const SizedBox(height: 20),
               ElevatedButton.icon(
-                icon: const Icon(Icons.search_rounded),
+                icon: const Icon(Icons.search_rounded, color: Colors.white),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xff084864),
                 ),
@@ -260,9 +258,7 @@ class _NewPostState extends State<NewPost> {
                       },
                     );
                     await _uploadPhoto();
-                    // ignore: use_build_context_synchronously
-                    Navigator.pop(
-                        context); // close CircularProgressIndicator dialog
+                    Navigator.pop(context); // close CircularProgressIndicator
                   }
 
                   await _getData(refToUser);
@@ -271,7 +267,6 @@ class _NewPostState extends State<NewPost> {
                   print("Highest Confidence: $highestConfidencePercentage");
 
                   // show CircularProgressIndicator for image classification
-                  // ignore: use_build_context_synchronously
                   showDialog(
                     context: context,
                     builder: (BuildContext context) {
@@ -314,13 +309,15 @@ class _NewPostState extends State<NewPost> {
                     {'Date': DateTime.now()},
                     SetOptions(merge: true),
                   );
-                  Navigator.pop(
-                      context); // close CircularProgressIndicator dialog
+                  Navigator.pop(context); // close CircularProgressIndicator
                   //reload previous page
                   Navigator.pushReplacementNamed(context, '/MainBottomClass');
                   print('done');
                 },
-                label: const Text('Classify the Disease'),
+                label: const Text(
+                  'Classify the Disease',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             ],
           ),

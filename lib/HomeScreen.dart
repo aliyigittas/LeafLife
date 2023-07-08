@@ -18,7 +18,6 @@ class _HomeScreenState extends State<HomeScreen> {
   final username = FirebaseAuth.instance.currentUser?.displayName;
   final userid = FirebaseAuth.instance.currentUser?.uid;
   int postCount = 0;
-  bool needsRefresh = false;
 
   @override
   void initState() {
@@ -47,10 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
     var refToUser = db.collection('Users').doc('$userid');
     return Column(
       children: [
-        //add logo here
-        const SizedBox(
-          height: 10,
-        ),
+        const SizedBox(height: 10),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -69,7 +65,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ],
         ),
-
         Expanded(
           child: RefreshIndicator(
             color: const Color.fromARGB(255, 0, 128, 0),
@@ -107,9 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               height: 100,
                               width: 100,
                             ),
-                            const SizedBox(
-                              width: 10,
-                            ),
+                            const SizedBox(width: 10),
                             const Icon(
                               Icons.add_a_photo,
                               size: 50,
@@ -119,9 +112,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         const Center(
                           child: Text(
-                              "Start scanning by pressing\n the button below! ",
-                              textAlign: TextAlign.center,
-                              textScaleFactor: 1.5),
+                            "Start scanning by pressing\n the button below! ",
+                            textAlign: TextAlign.center,
+                            textScaleFactor: 1.5,
+                          ),
                         ),
                       ],
                     );
@@ -143,18 +137,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             if (snapshot.connectionState ==
                                 ConnectionState.waiting) {
                               return const Center(
-                                  child: CircularProgressIndicator(
-                                color: Color(0xff084864),
-                              ));
-                            }
-                            if (snapshot.hasError) {
-                              return const Center(
-                                  child: Text('Something went wrong'));
-                            }
-                            if (!snapshot.hasData ||
-                                snapshot.data?.data() == null) {
-                              return const Center(
-                                child: Text("No posts yet"),
+                                child: CircularProgressIndicator(
+                                  color: Color(0xff084864),
+                                ),
                               );
                             }
 
@@ -278,18 +263,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                               width: 50,
                                             ),
                                           ),
-                                          const SizedBox(
-                                            height: 10,
-                                          ),
+                                          const SizedBox(height: 10),
                                           Text(
                                             "Confidence is ${contents['Confidence']}",
-                                            style: const TextStyle(
-                                              fontSize: 13,
-                                            ),
+                                            style:
+                                                const TextStyle(fontSize: 13),
                                           ),
-                                          const SizedBox(
-                                            height: 10,
-                                          ),
+                                          const SizedBox(height: 10),
                                           Text(
                                             suggestions,
                                             style: const TextStyle(
@@ -297,14 +277,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                               color: Color(0xFF000000),
                                             ),
                                           ),
-                                          const SizedBox(
-                                            height: 10,
-                                          ),
+                                          const SizedBox(height: 10),
                                           Text(
                                             time,
                                             style: const TextStyle(
-                                                fontSize: 12,
-                                                color: Colors.grey),
+                                              fontSize: 12,
+                                              color: Colors.grey,
+                                            ),
                                           ),
                                         ],
                                       ),

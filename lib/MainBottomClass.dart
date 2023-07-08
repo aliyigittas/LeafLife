@@ -13,7 +13,6 @@ class MainBottomClass extends StatefulWidget {
 
 class _MainBottomClassState extends State<MainBottomClass> {
   int selectedIndex = 0;
-
   final widgetTitle = ["Home", "Explore", "Profile"];
 
   void onItemTapped(int index) {
@@ -32,13 +31,19 @@ class _MainBottomClassState extends State<MainBottomClass> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widgetTitle.elementAt(selectedIndex)),
+        centerTitle: true,
+        title: Text(
+          widgetTitle.elementAt(selectedIndex),
+          style: const TextStyle(
+            fontFamily: 'FredokaOne',
+            fontSize: 25,
+            color: Color.fromARGB(255, 221, 249, 221),
+          ),
+        ),
         backgroundColor: const Color(0xFF5c9464),
       ),
       backgroundColor: const Color(0xFFA4E4B4),
-      body: Center(
-        child: widgetOptions.elementAt(selectedIndex),
-      ),
+      body: Center(child: widgetOptions.elementAt(selectedIndex)),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: const Color(0xFF5c9464),
         unselectedItemColor: const Color(0xFFA4E4B4),
@@ -58,7 +63,7 @@ class _MainBottomClassState extends State<MainBottomClass> {
           Navigator.pushReplacementNamed(context, '/NewPost');
         }),
         //scan icon
-        child: const Icon(Icons.add_a_photo_rounded),
+        child: const Icon(Icons.add_a_photo_rounded, color: Colors.white),
       ),
     );
   }

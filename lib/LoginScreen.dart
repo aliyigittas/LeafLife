@@ -18,22 +18,23 @@ class _LoginScreenState extends State<LoginScreen> {
     var userdata = await AuthService().signInWithGoogle();
     if (userdata != null && mounted) {
       final username = FirebaseAuth.instance.currentUser?.displayName;
-      Navigator.pushReplacementNamed(context, '/MainBottomClass',
-          arguments: {'username': username});
+      Navigator.pushReplacementNamed(
+        context,
+        '/MainBottomClass',
+        arguments: {'username': username},
+      );
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffbeffbc),
+      backgroundColor: const Color(0xFFA4E4B4),
       body: FutureBuilder(
         future: _initialization,
         builder: ((context, snapshot) {
           if (snapshot.hasError) {
-            return const Center(
-              child: Text("Error"),
-            );
+            return const Center(child: Text("Error"));
           } else if (snapshot.hasData) {
             return SafeArea(
               child: Center(
@@ -57,9 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             color: Color(0xff084864),
                           ),
                         ),
-                        const SizedBox(
-                          height: 20,
-                        ),
+                        const SizedBox(height: 20),
                       ],
                     ),
                     ElevatedButton.icon(
